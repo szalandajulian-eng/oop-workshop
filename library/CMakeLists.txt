@@ -4,10 +4,8 @@ project(Library)
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
 
 set(SOURCE_FILES
-    include/functions.h
-    include/Student.h
-    src/functions.cpp
-    src/Student.cpp
+        src/Container.cpp
+        include/Container.h
 )
 
 add_library(Library ${SOURCE_FILES})
@@ -47,7 +45,7 @@ endif()
 
 set(SOURCE_TEST_FILES
         test/master.cpp
-        test/StudentTest.cpp
+        test/ContainerTest.cpp
 )
 
 include_directories(
