@@ -6,6 +6,8 @@ project(Library)
 set(SOURCE_FILES
         src/Container.cpp
         include/Container.h
+        include/ContainerStack.h
+        src/ContainerStack.cpp
 )
 
 add_library(Library ${SOURCE_FILES})
@@ -21,10 +23,13 @@ include_directories(
         ${CMAKE_CURRENT_SOURCE_DIR}/include
         ${Boost_INCLUDE_DIRS}
 )
+
 set(SOURCE_TEST_CONTAINER_FILES
         # add files if necessary
         test/master.cpp
-        test/ContainerTest.cpp)
+        test/ContainerTest.cpp
+        test/ContainerStackTest.cpp)
+
 add_executable (ContainerTester ${SOURCE_TEST_CONTAINER_FILES})
 # add library with tested claseses to then tester program if necessary
 target_link_libraries (ContainerTester
@@ -39,4 +44,5 @@ add_test(TestContainer ContainerTester
 )
 
 add_custom_target(check ${CMAKE_COMMAND} -E env CTEST_OUTPUT_ON_FAILURE=1 BOOST_TEST_LOG_LEVEL=all
-        ${CMAKE_CTEST_COMMAND} -C $<CONFIGURATION>)
+        ${CMAKE_CTEST_COMMAND} -C $<CONFIGURATION> --verbose
+        WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
