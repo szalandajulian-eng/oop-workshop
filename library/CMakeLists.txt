@@ -8,6 +8,8 @@ set(SOURCE_FILES
         include/Container.h
         include/ContainerStack.h
         src/ContainerStack.cpp
+        include/Crane.h
+        src/Crane.cpp
 )
 
 add_library(Library ${SOURCE_FILES})
@@ -28,7 +30,8 @@ set(SOURCE_TEST_CONTAINER_FILES
         # add files if necessary
         test/master.cpp
         test/ContainerTest.cpp
-        test/ContainerStackTest.cpp)
+        test/ContainerStackTest.cpp
+        test/CraneTest.cpp)
 
 add_executable (ContainerTester ${SOURCE_TEST_CONTAINER_FILES})
 # add library with tested claseses to then tester program if necessary
